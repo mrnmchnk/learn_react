@@ -3,7 +3,7 @@
   padding: 0;
   box-sizing: border-box;
   background-color: #363131;
-  border-radius: 10px;
+  border-radius: 3px;
   color: #bebebe;
 
 }
@@ -25,7 +25,7 @@
 .post {
   display: flex;
   padding: 15px;
-  border: 2px solid teal;
+  border: 3px solid teal;
   margin: 15px 0;
   justify-content: space-between;
   align-items: center;
