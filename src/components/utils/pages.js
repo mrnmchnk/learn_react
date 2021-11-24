@@ -3,6 +3,7 @@ export const getPageCount = (totalCount, limit) => {
 }
 
 
+// TODO: написать это через useMemo 
 export const getPagesArray = (totalPages) => {
   let result =[];
   for (let i = 0; i < totalPages; i++) {
@@ -10,6 +11,3 @@ export const getPagesArray = (totalPages) => {
   }
   return result;
 }
-
-
-
