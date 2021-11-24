@@ -10,11 +10,8 @@ function App() {
           <Route path="/about">
           </Route>
         </Routes> */}
-        <Link to="/about">About</Link>
           <Routes>
-          <Route path="/about">
-            <React.Fragment/>
-            <About />
+            <Route path="/about">
           </Route>
           </Routes>
     </BrowserRouter>
