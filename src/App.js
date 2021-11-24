@@ -1,4 +1,4 @@
-import React, {useState, useRef, useMemo} from "react";
+import React, {useState, useRef, useMemo, useEffect} from "react";
 import Counter from "./components/Counter";
 import ClassCounter from "./components/ClassCounter";
 import './styles/App.css';
@@ -14,6 +14,10 @@ import PostFilter from "./components/PostFilter";
 import MyModal from "./components/UI/MyModal/MyModal";
 import { usePosts } from "./hooks/usePosts";
 import axios from "axios";
+import PostService from "./API/PostServise";
+import Loader from "./components/UI/Loader/Loader";
+import { useFetching } from "./hooks/useFetching";
+import {getPageCount, getPagesArray} from './components/utils/pages.js';
 
 function App() {
   // const info = { title: 'hi', text: 'how are you?' };
@@ -22,8 +26,25 @@ function App() {
 
   const [filter, setFilter] = useState({sort: '', query: ''});
   const [modal, setModal] = useState(false);
+  const [totalPages, setTotalPages] = useState(0);
+  const [limit, setLimit] = useState(10);
+  const [page, setPage] = useState(1);
   const sortedAndSearchedPosts = usePosts(posts, filter.sort, filter.query)
 
+  let pagesArray = getPagesArray(totalPages);
+
+  const [fetchPosts, isPostsLoading, postError] = useFetching( async () => {
+    const response = await PostService.getAll(limit, page)
+    setPosts(response.data)
+    const totalCount = response.headers['x-total-count']
+    setTotalPages(getPageCount(totalCount, limit))
+  } )
+
+  console.log(totalPages);
+
+  useEffect(() => {
+    fetchPosts()    
+  }, [])
 
 
   const createPost = (newPost) => {
@@ -31,10 +52,6 @@ function App() {
     setModal(false)
   }
 
-  async function fetchPosts() {
-    const response = await axios.get('https://jsonplaceholder.typicode.com/posts');
-    setPosts(response.data);
-  }
 
   // Получаем post из дочернего компонента
   const removePost = (post) => {
@@ -44,7 +61,7 @@ function App() {
 
   return (
     <div className="App">
-      <button onClick={fetchPosts} >GET POSTS</button>
+      {/* <button onClick={fetchPosts} >GET POSTS</button> */}
       <MyButton
       style={{ marginTop: '30px' }}
         onClick={() => setModal(true) }>
@@ -61,7 +78,22 @@ function App() {
         filter={filter}
         setFilter={setFilter}
       />
-      <PostList remove={removePost} posts={sortedAndSearchedPosts} title={'Посты'} />
+      {postError &&
+       <h2 style={{textAlign: 'center'}} >Произошла Ошибка {postError}</h2> 
+      }
+      {isPostsLoading
+        ?
+        <div style={{display: 'flex', justifyContent: 'center', marginTop: '50px'}} >
+          <Loader />
+        </div>
+        :
+        <PostList remove={removePost} posts={sortedAndSearchedPosts} title={'Посты'} />
+      }
+      <div style={{margin: '30px 0'}}>
+        {pagesArray.map(p => 
+          <MyButton >{p}</MyButton>  
+        )}
+      </div>
     </div>
   );
 }
