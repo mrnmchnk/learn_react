@@ -22,5 +22,4 @@ const PostFilter = ({filter, setFilter}) => {
       </div>
   )
 }
-
 export default PostFilter;
