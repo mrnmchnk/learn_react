@@ -11,7 +11,7 @@ function Login() {
   const login = event => {
     event.preventDefault();
     setIsAuth(true);
-    return <Navigate to='/posts' />;
+    localStorage.setItem('auth', 'true');
   }
 
   return (
