@@ -1,18 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route, Link, Navigate } from "react-router-dom";
 import AppRouter from "./components/AppRouter";
 import Navbar from "./components/UI/Navbar/Navbar";
+import { AuthContext } from "./context";
 import About from "./pages/About";
 import Error from "./pages/Error";
 import Posts from "./pages/Posts";
 import './styles/App.css';
 
 function App() {
+  const [isAuth, setIsAuth] = useState(false);
   return (
-    <Router>
-      <Navbar/>
-      <AppRouter/>
-    </Router>
+    <AuthContext.Provider value={{
+      isAuth,
+      setIsAuth
+    }} >
+      <Router>
+        <Navbar/>
+        <AppRouter/>
+      </Router>
+    </AuthContext.Provider>
   )
 }
 

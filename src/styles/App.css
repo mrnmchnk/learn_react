@@ -18,7 +18,7 @@
 }
 
 .App {
-  width: 800px;
+  width: 900px;
 
 }
 
@@ -31,6 +31,11 @@
   align-items: center;
   
 }
+
+.post__btns {
+  display: flex;
+}
+
 
 .post-enter {
   transform: translateX(-750px);
