@@ -1,6 +1,5 @@
-import React from 'react'
+import React from 'react';
 import { getPagesArray } from '../../utils/pages';
-import moduleName from 'module'
 
 const Pagination = ({totalPages, page, changePage}) => {
   let pagesArray = getPagesArray(totalPages);
@@ -9,12 +8,12 @@ const Pagination = ({totalPages, page, changePage}) => {
       <div className='page__wrapper'>
         {pagesArray.map(p => 
           <span
-          onClick={() => changePage(p)}
+            onClick={() => changePage(p)}
             key={p}
             className={page == p ? 'page page__current' : 'page'}
           >
             {p}
-          </span>  
+          </span>
         )}
       </div>
   )

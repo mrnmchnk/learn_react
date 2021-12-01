@@ -15,7 +15,6 @@ import { usePosts } from "../hooks/usePosts";
 import '../styles/App.css';
 
 function Posts() {
-  // const info = { title: 'hi', text: 'how are you?' };
   // formData
   
   const [posts, setPosts] = useState([]);
@@ -35,30 +34,31 @@ function Posts() {
     const totalCount = response.headers['x-total-count']
     setTotalPages(getPageCount(totalCount, limit))
   } )
-
+  
+  const inputRef = useRef();
   // console.log(totalPages);
-
 
   useObserver(lastElement, page < totalPages, isPostsLoading, () => {
     setPage(page + 1);
   })
 
-
   useEffect(() => {
     fetchPosts(limit, page)    
   }, [page, limit])
-
 
   const createPost = (newPost) => {
     setPosts( [...posts, newPost] )
     setModal(false)
   }
 
-
   // Получаем post из дочернего компонента
   const removePost = (post) => {
     setPosts(posts.filter( p => p.id !== post.id)) 
   }
+
+  // const handleClickPost = () => {
+  //   console.log(inputRef.current.value)
+  // }
 
   const changePage = (page) => {
     setPage(page)
@@ -67,6 +67,8 @@ function Posts() {
   return (
     <div className="App">
       {/* <button onClick={fetchPosts} >GET POSTS</button> */}
+      {/* <button onClick={handleClickPost}>click</button>
+      <input ref={inputRef}/> */}
       <MyButton
         style={{ marginTop: '30px' }}
         onClick={() => setModal(true) }

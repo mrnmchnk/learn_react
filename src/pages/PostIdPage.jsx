@@ -3,6 +3,7 @@ import { useParams,  } from 'react-router-dom';
 import {useFetching} from '../hooks/useFetching';
 import PostService from '../API/PostServise';
 import Loader from '../components/UI/Loader/Loader';
+import MyButton from '../components/UI/button/MyButton';
 
 const PostIdPage = () => {
   const params = useParams();
@@ -32,9 +33,13 @@ const PostIdPage = () => {
         :
         <div>{post.id}. {post.title}</div>
       }
-      <h1>
+      <MyButton //onClick={ () => router(`/posts/${props.post.id}`) } 
+      >
+        Сохранить
+      </MyButton>
+      <h2 style={{marginTop:'30px'}} >
         Комментарии:
-      </h1>
+      </h2>
       {isComloading
         ?
         <Loader/>

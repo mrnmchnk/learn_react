@@ -1,10 +1,18 @@
 import React from 'react'
+import PostItem from '../components/PostItem';
+import { PostContext } from '../context';
 
 const About = () => {
   return (
     <div>
-      {/* { count ? <h1>Количество сообщений: {count}</h1> : <h1>Нет новых сообщений</h1> } */}
-      Это приложение создано
+      {/* <h1>Сохраненные посты:</h1>
+      <PostContext.Provider value={{
+
+      }}>
+        {posts.map((post, index) => 
+          <PostItem number={index+1} post={post}  />
+        )}
+      </PostContext.Provider> */}
     </div>
   )
 }
