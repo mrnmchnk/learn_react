@@ -80,3 +80,12 @@
 .navbar__links {
   margin-left: auto;
 }
+
+
+.hidden {
+  display: none;
+}
+
+.revealed {
+  display: block;
+}

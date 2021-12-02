@@ -2,53 +2,37 @@ import React, { useState } from 'react'
 
 function Carousel() {
 
+  // СДЕЛАТЬ ПРОВЕРКИ ЧТОБЫ РАБОТАЛО ПЕРЕКЛЮЧЕНИЕ С 3 НА 1 И НАОБОРОТ
+
   const disable = 'carousel-item'
   const active = 'carousel-item active'
 
+  const [activeSlide, setactiveSlide] = useState(1)
   const [firstSliderClass, setFirstSliderClass] = useState(active)
   const [secondSliderClass, setSecondSliderClass] = useState(disable)
   const [thirdSliderClass, setThirdSliderClass] = useState(disable)
 
   const showPrev = () => {
-    if (firstSliderClass == active) {
-      setFirstSliderClass(disable)
-      setThirdSliderClass(active)
-    }
-    if (secondSliderClass == active) {
-      setSecondSliderClass(disable)
-      setFirstSliderClass(active)
-    }
-    if (thirdSliderClass == active) {
-      setThirdSliderClass(disable)
-      setSecondSliderClass(active)
-    }
+    setactiveSlide(activeSlide-1);
+
   }
 
   const showNext = () => {
-    if (firstSliderClass == active) {
-      setFirstSliderClass(disable)
-      setSecondSliderClass(active)
-    }
-    if (secondSliderClass == active) {
-      setSecondSliderClass(disable)
-      setThirdSliderClass(active)
-    }
-    if (thirdSliderClass == active) {
-      setThirdSliderClass(disable)
-      setFirstSliderClass(active)
-    }
+      
+    setactiveSlide(activeSlide+1);
+
   }
 
   return (
     <div id="carousel" class="carousel slide" data-bs-ride="carousel">
       <div class="carousel-inner">
-        <div class={firstSliderClass}>
+        <div class={activeSlide == 1 ?  active : disable} id='1'>
           <img alt="" class="d-block w-100" src="https://via.placeholder.com/150"></img>
         </div>
-        <div  class={secondSliderClass}>
+        <div  class={activeSlide == 2 ?  active : disable} id='2'>
           <img alt="" class="d-block w-100" src="https://via.placeholder.com/150/0000FF/808080"></img>
         </div>
-        <div class={thirdSliderClass}>
+        <div class={activeSlide == 3 ?  active : disable} id='3'>
           <img alt="" class="d-block w-100" src="https://via.placeholder.com/150/FF0000/FFFFFF"></img>
         </div>
       </div>

@@ -17,45 +17,48 @@ import GetCard from "./components/learning/GetCard";
 import ProgressBar from 'react-bootstrap/ProgressBar'
 import { Collapse } from "react-bootstrap";
 import MyCollapse from "./components/learning/MyCollapse";
+import MyForm from "./components/learning/MyForm";
+import MyTable from "./components/learning/MyTable";
 
 
 
 function App() {
-  const [isAuth, setIsAuth] = useState(false);
-  const [isLoading, setLoading] = useState(true);
+  // const [isAuth, setIsAuth] = useState(false);
+  // const [isLoading, setLoading] = useState(true);
 
-  useEffect(() => {
-    if ( localStorage.getItem('auth') ) {
-      setIsAuth(true);
-    }
-    setLoading(false);
-  }, [])
-
-  return (
-    <AuthContext.Provider value={{
-      isAuth,
-      setIsAuth,
-      isLoading,
-    }} >
-      <Router>
-        <Navbar/>
-        <AppRouter/>
-      </Router>
-    </AuthContext.Provider>
-  )
-  
-  // const title = "title 1";
-  // const text = 'collapse me';
+  // useEffect(() => {
+  //   if ( localStorage.getItem('auth') ) {
+  //     setIsAuth(true);
+  //   }
+  //   setLoading(false);
+  // }, [])
 
   // return (
-  //   <>
-  //     <Carousel />
-  //     <BtnGroup />
-  //     <GetCard title={title} text={text} />
-  //     <Progress percentage={40}/>
-  //     <MyCollapse text={text} opened={true} />
-  //   </>
+  //   <AuthContext.Provider value={{
+  //     isAuth,
+  //     setIsAuth,
+  //     isLoading,
+  //   }} >
+  //     <Router>
+  //       <Navbar/>
+  //       <AppRouter/>
+  //     </Router>
+  //   </AuthContext.Provider>
   // )
+  
+  const title = "title 1";
+  const text = 'collapse me';
+
+  return (
+    <>
+      <Carousel />
+      <BtnGroup />
+      <GetCard title={title} text={text} />
+      <Progress percentage={40}/>
+      <MyCollapse text={text} opened={true} />
+      <MyForm />
+    </>
+  )
 
 
 }

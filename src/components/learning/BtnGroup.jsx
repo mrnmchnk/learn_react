@@ -27,34 +27,37 @@ import React, { useState } from 'react'
 
 
 function BtnGroup() {
-  const [ activeLeft, setActiveLeft ] = useState(false);
-  const [ activeRight, setActiveRight ] = useState(false);
+  // а можно использовать одно состояние и в проверке просто подставить ! --  но только если вначале обе не были бы неактивны? 
+
+  const [activeBtn, setactiveBtn] = useState(null)
 
   const onLeftClick = () => {
-    setActiveRight(false)
-    setActiveLeft(true);
+    setactiveBtn('left')
   }
   const onRightClick = () => {
-    setActiveLeft(false)
-    setActiveRight(true);
+    setactiveBtn('right')
   }
+  
 
   return (
     <div class="btn-group" role="group">
       <Button 
         type="button"
         variant='primary'
-        className={ activeLeft? 'btn btn-secondary left active' : 'btn btn-secondary left' } 
+        className={activeBtn === 'left' ? 'btn btn-secondary left active' : 'btn btn-secondary left' }
         onClick={onLeftClick} 
-      >
-        {activeLeft? 'Active' : 'Not Active' }
+        >
+        {/* {activeLeft? 'Active' : 'Not Active' } */}
+        Left
       </Button>
       <Button 
         type="button" 
-        className={ activeRight? 'btn btn-secondary right active' : 'btn btn-secondary right' } 
+        className={activeBtn === 'right' ? 'btn btn-secondary right active' : 'btn btn-secondary right' }
+        // className={ activeRight? 'btn btn-secondary right active' : 'btn btn-secondary right' } 
         onClick={onRightClick} 
       >
-        {activeRight? 'Active' : 'Not Active' }
+        {/* {activeRight? 'Active' : 'Not Active' } */}
+        Right
       </Button>
     </div>
   )
