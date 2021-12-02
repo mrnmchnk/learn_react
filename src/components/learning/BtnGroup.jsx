@@ -1,3 +1,4 @@
+import Button from '@restart/ui/esm/Button';
 import React, { useState } from 'react'
 
 // class BtnGroup extends React.Component {
@@ -40,20 +41,21 @@ function BtnGroup() {
 
   return (
     <div class="btn-group" role="group">
-      <button 
-        type="button" 
+      <Button 
+        type="button"
+        variant='primary'
         className={ activeLeft? 'btn btn-secondary left active' : 'btn btn-secondary left' } 
         onClick={onLeftClick} 
       >
         {activeLeft? 'Active' : 'Not Active' }
-      </button>
-      <button 
+      </Button>
+      <Button 
         type="button" 
         className={ activeRight? 'btn btn-secondary right active' : 'btn btn-secondary right' } 
         onClick={onRightClick} 
       >
         {activeRight? 'Active' : 'Not Active' }
-      </button>
+      </Button>
     </div>
   )
 }

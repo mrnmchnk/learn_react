@@ -1,46 +1,61 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Routes, Route, Link, Navigate } from "react-router-dom";
 import AppRouter from "./components/AppRouter";
-import BtnGroup from "./components/BtnGroup";
-import Carousel from "./components/Carousel";
-import DefinitionsList from "./components/DefinitionsList";
+import BtnGroup from "./components/learning/BtnGroup";
+import Carousel from "./components/learning/Carousel";
+import DefinitionsList from "./components/learning/DefinitionsList";
 import ListGroup from "./components/ListGroup";
-import Progress from "./components/Progress";
+import Progress from "./components/learning/Progress";
 import Navbar from "./components/UI/Navbar/Navbar";
 import { AuthContext } from "./context";
 import About from "./pages/About";
 import Error from "./pages/Error";
 import Posts from "./pages/Posts";
 import './styles/App.css';
+import ClassCounter from "./components/learning/ClassCounter";
+import GetCard from "./components/learning/GetCard";
+import ProgressBar from 'react-bootstrap/ProgressBar'
+import { Collapse } from "react-bootstrap";
+import MyCollapse from "./components/learning/MyCollapse";
+
 
 
 function App() {
-  // const [isAuth, setIsAuth] = useState(false);
-  // const [isLoading, setLoading] = useState(true);
+  const [isAuth, setIsAuth] = useState(false);
+  const [isLoading, setLoading] = useState(true);
 
-  // useEffect(() => {
-  //   if ( localStorage.getItem('auth') ) {
-  //     setIsAuth(true);
-  //   }
-  //   setLoading(false);
-  // }, [])
-
-  // return (
-  //   <AuthContext.Provider value={{
-  //     isAuth,
-  //     setIsAuth,
-  //     isLoading,
-  //   }} >
-  //     <Router>
-  //       <Navbar/>
-  //       <AppRouter/>
-  //     </Router>
-  //   </AuthContext.Provider>
-  // )
+  useEffect(() => {
+    if ( localStorage.getItem('auth') ) {
+      setIsAuth(true);
+    }
+    setLoading(false);
+  }, [])
 
   return (
-    <Carousel />
+    <AuthContext.Provider value={{
+      isAuth,
+      setIsAuth,
+      isLoading,
+    }} >
+      <Router>
+        <Navbar/>
+        <AppRouter/>
+      </Router>
+    </AuthContext.Provider>
   )
+  
+  // const title = "title 1";
+  // const text = 'collapse me';
+
+  // return (
+  //   <>
+  //     <Carousel />
+  //     <BtnGroup />
+  //     <GetCard title={title} text={text} />
+  //     <Progress percentage={40}/>
+  //     <MyCollapse text={text} opened={true} />
+  //   </>
+  // )
 
 
 }
