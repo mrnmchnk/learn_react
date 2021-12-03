@@ -20,6 +20,7 @@ import MyCollapse from "./components/learning/MyCollapse";
 import MyForm from "./components/learning/MyForm";
 import MyTable from "./components/learning/MyTable";
 import Log from "./components/learning/Log";
+import TodoBox from "./components/learning/TodoBox";
 
 
 
@@ -59,6 +60,7 @@ function App() {
       <MyCollapse text={text} opened={true} />
       {/* <MyForm /> */}
       <Log />
+      <TodoBox />
     </>
   )
 
