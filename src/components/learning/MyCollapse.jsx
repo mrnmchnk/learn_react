@@ -7,7 +7,6 @@ const MyCollapse = ({opened}) => {
   const toggleShow = () => {
     setIsShown( !isShown )
   }
-  console.log(opened)
 
   return (
     <div style={{marginTop: 30}} >

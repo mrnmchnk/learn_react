@@ -1,26 +1,23 @@
 import React, { useState } from 'react'
 
 function Carousel() {
-
-  // СДЕЛАТЬ ПРОВЕРКИ ЧТОБЫ РАБОТАЛО ПЕРЕКЛЮЧЕНИЕ С 3 НА 1 И НАОБОРОТ
-
+  const [activeSlide, setactiveSlide] = useState(1)
+  
   const disable = 'carousel-item'
   const active = 'carousel-item active'
 
-  const [activeSlide, setactiveSlide] = useState(1)
-  const [firstSliderClass, setFirstSliderClass] = useState(active)
-  const [secondSliderClass, setSecondSliderClass] = useState(disable)
-  const [thirdSliderClass, setThirdSliderClass] = useState(disable)
-
   const showPrev = () => {
-    setactiveSlide(activeSlide-1);
-
+    setactiveSlide(activeSlide - 1)
+    if ( activeSlide < 2 ) {
+      setactiveSlide(3)
+    }
   }
 
   const showNext = () => {
-      
-    setactiveSlide(activeSlide+1);
-
+    setactiveSlide(activeSlide + 1)
+    if ( activeSlide > 2 ) {
+      setactiveSlide(1)
+    }
   }
 
   return (
@@ -29,7 +26,7 @@ function Carousel() {
         <div class={activeSlide == 1 ?  active : disable} id='1'>
           <img alt="" class="d-block w-100" src="https://via.placeholder.com/150"></img>
         </div>
-        <div  class={activeSlide == 2 ?  active : disable} id='2'>
+        <div class={activeSlide == 2 ?  active : disable} id='2'>
           <img alt="" class="d-block w-100" src="https://via.placeholder.com/150/0000FF/808080"></img>
         </div>
         <div class={activeSlide == 3 ?  active : disable} id='3'>
@@ -53,19 +50,3 @@ function Carousel() {
 
 export default Carousel
 
-
-
-
-// (!secondSliderClass && !thirdSliderClass) 
-// ? 
-// setSecondSliderClass(active) 
-// : 
-// (!firstSliderClass && !thirdSliderClass) 
-// ? 
-// setThirdSliderClass(active)
-// :
-// (!firstSliderClass && !secondSliderClass)
-// ?
-// setFirstSliderClass(active)
-// :
-// null

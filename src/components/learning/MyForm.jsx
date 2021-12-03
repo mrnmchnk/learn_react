@@ -32,20 +32,12 @@ const MyForm = () => {
   
   const submitForm = (e) => {
     e.preventDefault()
-    setVisible( !visible )
+    isChecked ? setVisible( !visible ) : alert('You have to agree with terms')
   }
   const hideTable = () => {
     setVisible( !visible )
   } 
 
-  // const userData = [
-  //   {country: countryData},
-  //   {acceptRules: isChecked.toString()},
-  //   {address: adrrData},
-  //   {password: passwData},
-  //   {city: cityData},
-  //   {email: emailData},
-  // ]
   const userData = [
     { key: 'country' ,
       val: countryData
@@ -65,7 +57,6 @@ const MyForm = () => {
     { key: 'email' ,
       val: emailData
     },
-  
   ]
   
   return (
@@ -111,7 +102,9 @@ const MyForm = () => {
       <button onClick={hideTable} type="button" className="btn btn-primary">Back</button>
       <table className="table">
         <tbody>
-          {userData.sort( (a,b) => a.key > b.key ? 1 : -1 ).map( item => {
+          {userData
+            .sort( (a,b) => a.key > b.key ? 1 : -1 )
+            .map( item => {
             return(
               <tr>
                 <td>{item.key}</td>

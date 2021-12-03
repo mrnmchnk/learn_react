@@ -19,6 +19,7 @@ import { Collapse } from "react-bootstrap";
 import MyCollapse from "./components/learning/MyCollapse";
 import MyForm from "./components/learning/MyForm";
 import MyTable from "./components/learning/MyTable";
+import Log from "./components/learning/Log";
 
 
 
@@ -56,7 +57,8 @@ function App() {
       <GetCard title={title} text={text} />
       <Progress percentage={40}/>
       <MyCollapse text={text} opened={true} />
-      <MyForm />
+      {/* <MyForm /> */}
+      <Log />
     </>
   )
 
