@@ -33,7 +33,7 @@ const TodoBox = () => {
         </form>
       </div>
       {postArr.map( item => {
-        return <TodoItem task={item} onRemove={onRemove} />
+        return <TodoItem key={item.id} task={item} onRemove={onRemove} />
       } )}
     </div>
   )

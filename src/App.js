@@ -15,12 +15,15 @@ import './styles/App.css';
 import ClassCounter from "./components/learning/ClassCounter";
 import GetCard from "./components/learning/GetCard";
 import ProgressBar from 'react-bootstrap/ProgressBar'
-import { Collapse } from "react-bootstrap";
+import { Collapse, Modal } from "react-bootstrap";
 import MyCollapse from "./components/learning/MyCollapse";
 import MyForm from "./components/learning/MyForm";
 import MyTable from "./components/learning/MyTable";
 import Log from "./components/learning/Log";
 import TodoBox from "./components/learning/TodoBox";
+import ModalLearn from "./components/learning/ModalLearn";
+import Autocomplete from "./components/learning/Autocomplete";
+import Clock from "./components/learning/Clock";
 
 
 
@@ -61,15 +64,14 @@ function App() {
       {/* <MyForm /> */}
       <Log />
       <TodoBox />
+      <ModalLearn />
+      <Autocomplete />
+      <Clock />
     </>
   )
-
-
 }
 
-
 export default App;
-
 
 // return (
 //   <ListGroup>

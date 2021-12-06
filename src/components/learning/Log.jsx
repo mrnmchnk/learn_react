@@ -37,7 +37,7 @@ const Log = () => {
       <div className="list-group">
         {logArr.map(item => {
           return(
-              <button onClick={() => deleteLog(item.id)} id={item.id} type="button" className="list-group-item list-group-item-action">{item.val}</button>
+              <button onClick={() => deleteLog(item.id)} key={item.id} type="button" className="list-group-item list-group-item-action">{item.val}</button>
               )
             })}
       </div>
