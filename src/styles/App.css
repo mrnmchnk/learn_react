@@ -89,3 +89,22 @@
 .revealed {
   display: block;
 }
+
+.emailList {
+  border: 1px solid lightgray;
+  border-radius: 10px;
+  list-style: none;
+}
+
+.emailList__item {
+  border-bottom: 1px solid lightgrey;
+  padding: 2px;
+}
+
+.emailList__item:last-child {
+  border-bottom: none;
+}
+
+.emailList__item:hover, .emailList__item:focus {
+  background: lightgrey;
+}

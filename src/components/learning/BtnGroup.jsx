@@ -12,7 +12,7 @@ function BtnGroup() {
   }
   
   return (
-    <div class="btn-group" role="group">
+    <div className="btn-group" role="group">
       <Button 
         type="button"
         variant='primary'

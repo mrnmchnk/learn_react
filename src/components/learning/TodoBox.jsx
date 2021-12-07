@@ -24,12 +24,12 @@ const TodoBox = () => {
 
   return (
     <div>
-      <div class="mb-3">
-        <form onSubmit={onSubmitForm} class="d-flex">
-          <div class="me-3">
-            <input onChange={onInput} type="text" value={task} required="" class="form-control" placeholder="I am going..."></input>
+      <div className="mb-3">
+        <form onSubmit={onSubmitForm} className="d-flex">
+          <div className="me-3">
+            <input onChange={onInput} type="text" value={task} required="" className="form-control" placeholder="I am going..."></input>
           </div>
-          <button type="submit" class="btn btn-primary">add</button>
+          <button type="submit" className="btn btn-primary">add</button>
         </form>
       </div>
       {postArr.map( item => {

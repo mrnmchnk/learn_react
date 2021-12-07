@@ -56,17 +56,17 @@ function App() {
 
   return (
     <>
+      {/* <Clock /> */}
       <Carousel />
       <BtnGroup />
-      <GetCard title={title} text={text} />
+      {/* <GetCard title={title} text={text} /> */}
       <Progress percentage={40}/>
-      <MyCollapse text={text} opened={true} />
+      {/* <MyCollapse text={text} opened={true} /> */}
       {/* <MyForm /> */}
       <Log />
       <TodoBox />
       <ModalLearn />
       <Autocomplete />
-      <Clock />
     </>
   )
 }

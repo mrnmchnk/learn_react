@@ -21,25 +21,25 @@ function Carousel() {
   }
 
   return (
-    <div id="carousel" class="carousel slide" data-bs-ride="carousel">
-      <div class="carousel-inner">
-        <div class={activeSlide == 1 ?  active : disable} id='1'>
-          <img alt="" class="d-block w-100" src="https://via.placeholder.com/150"></img>
+    <div id="carousel" className="carousel slide" data-bs-ride="carousel">
+      <div className="carousel-inner">
+        <div className={activeSlide == 1 ?  active : disable} id='1'>
+          <img alt="" className="d-block w-100" src="https://via.placeholder.com/150"></img>
         </div>
-        <div class={activeSlide == 2 ?  active : disable} id='2'>
-          <img alt="" class="d-block w-100" src="https://via.placeholder.com/150/0000FF/808080"></img>
+        <div className={activeSlide == 2 ?  active : disable} id='2'>
+          <img alt="" className="d-block w-100" src="https://via.placeholder.com/150/0000FF/808080"></img>
         </div>
-        <div class={activeSlide == 3 ?  active : disable} id='3'>
-          <img alt="" class="d-block w-100" src="https://via.placeholder.com/150/FF0000/FFFFFF"></img>
+        <div className={activeSlide == 3 ?  active : disable} id='3'>
+          <img alt="" className="d-block w-100" src="https://via.placeholder.com/150/FF0000/FFFFFF"></img>
         </div>
       </div>
-      <button onClick={showPrev} class="carousel-control-prev" data-bs-target="#carousel" type="button" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
+      <button onClick={showPrev} className="carousel-control-prev" data-bs-target="#carousel" type="button" data-bs-slide="prev">
+        <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span className="visually-hidden">Previous</span>
       </button>
-      <button onClick={showNext} class="carousel-control-next" data-bs-target="#carousel" type="button" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
+      <button onClick={showNext} className="carousel-control-next" data-bs-target="#carousel" type="button" data-bs-slide="next">
+        <span className="carousel-control-next-icon" aria-hidden="true"></span>
+        <span className="visually-hidden">Next</span>
       </button>
     </div>
 
