@@ -24,6 +24,7 @@ import TodoBox from "./components/learning/TodoBox";
 import ModalLearn from "./components/learning/ModalLearn";
 import Autocomplete from "./components/learning/Autocomplete";
 import Clock from "./components/learning/Clock";
+import RemoteTodoBox from "./components/learning/RemoteTodoBox";
 
 
 
@@ -64,9 +65,10 @@ function App() {
       {/* <MyCollapse text={text} opened={true} /> */}
       {/* <MyForm /> */}
       <Log />
-      <TodoBox />
-      <ModalLearn />
-      <Autocomplete />
+      {/* <TodoBox /> */}
+      {/* <ModalLearn /> */}
+      {/* <Autocomplete /> */}
+      <RemoteTodoBox />
     </>
   )
 }

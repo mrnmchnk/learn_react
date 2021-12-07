@@ -1,21 +1,22 @@
 import axios from 'axios';
 import React, { useEffect, useRef, useState } from 'react'
+import useDebounce from '../../hooks/useDebounce';
 
 const Autocomplete = () => {
   const [inputVal, setInputVal] = useState('')
   const [resArr, setResArr] = useState([])
   const [filtered, setFiltered] = useState([])
   const inputRef = useRef()
-
+  
+  const debInputVal = useDebounce(inputVal, 500)
+  
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log('hello')
   }
-
+  
   const fetchCountries = async (e) => {
-    setInputVal(e.target.value.toLowerCase())
     await axios.get(`https://jsonplaceholder.typicode.com/comments?_limit=100`)
-      .then( (res) => setResArr( res.data.map((item) => item.email) ) )
+    .then( (res) => setResArr( res.data.map((item) => item.email) ) )
   }
   
   const filterRes = () => {
@@ -26,8 +27,9 @@ const Autocomplete = () => {
   
   useEffect( () => {
     inputRef.current.focus()
+    fetchCountries()
     filterRes()
-  }, [inputVal] )
+  }, [debInputVal] )
 
   const onEnter = (e) => {
     e.key === 'Enter' && setInputVal(e.target.textContent)
@@ -36,27 +38,28 @@ const Autocomplete = () => {
   const onInputEnter = (e) => {
     e.key === 'Enter' && setInputVal(filtered[0])
   }
-
+  
+  
   return (
     <div style={{ margin: '30px 0px' }} >
       <form>
         <input 
-          onChange={fetchCountries} 
+          onChange={ e => setInputVal(e.target.value.toLowerCase())} 
           onSubmit={handleSubmit}
-          onKeyDown={(e) => onInputEnter(e)}
+          onKeyDown={e => onInputEnter(e)}
           value={inputVal}
           tabIndex={1}
           ref={inputRef}
           type="text" 
-          className="form-control" 
+          className="form-control"
           placeholder="Enter Email to search"></input>
       </form>
       <ul className='emailList' >
-        { inputVal &&  filtered.map((item, index) => 
+        { inputVal && (debInputVal === inputVal) && filtered.map((item, index) => 
           <li 
           className='emailList__item'
           onClick={ (item) => setInputVal(item.target.textContent) } 
-          onKeyDown={(e) => onEnter(e)} 
+          onKeyDown={e => onEnter(e)} 
           tabIndex={index+2} 
           key={index}
           >
