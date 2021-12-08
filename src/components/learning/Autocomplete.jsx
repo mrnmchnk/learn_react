@@ -42,10 +42,9 @@ const Autocomplete = () => {
   
   return (
     <div style={{ margin: '30px 0px' }} >
-      <form>
+      <form onSubmit={handleSubmit}>
         <input 
           onChange={ e => setInputVal(e.target.value.toLowerCase())} 
-          onSubmit={handleSubmit}
           onKeyDown={e => onInputEnter(e)}
           value={inputVal}
           tabIndex={1}
@@ -54,7 +53,7 @@ const Autocomplete = () => {
           className="form-control"
           placeholder="Enter Email to search"></input>
       </form>
-      <ul className='emailList' >
+      <ul className={inputVal ? 'emailList' : 'emailList hidden'} >
         { inputVal && (debInputVal === inputVal) && filtered.map((item, index) => 
           <li 
           className='emailList__item'

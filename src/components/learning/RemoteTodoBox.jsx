@@ -6,6 +6,7 @@ import update from 'immutability-helper'
 const RemoteTodoBox = () => {
 
   const [task, setTask] = useState('')
+  const [sorting, setSorting] = useState(false)
   const [submittedTask, setSubmittedTask] = useState('')
   const [tasksArr, setTasksArr] = useState([])
 
@@ -24,10 +25,20 @@ const RemoteTodoBox = () => {
     setTimeout(() => setTask(''), 500)
   }
 
+  // const sortTasks = (task) => {
+  //   setTasksArr( tasksArr.sort( (a,b) => a.completed - b.completed ) )
+  // }
+
+  // useEffect( () => {
+  //   sortTasks()
+  //   setSorting(false)
+  // }, [sorting] )
+
   const onFinish = async (task) => {
     const res = await axios.patch(`https://jsonplaceholder.typicode.com/todos/${task.id}`, { completed: !task.completed })
-    let index = task.id-1
+    let index = task.id - 1
     setTasksArr( update(tasksArr, {[index]: { completed: {$set: res.data.completed} }}))
+    // setSorting(true)
   }
 
   useEffect( () => {

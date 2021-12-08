@@ -58,16 +58,16 @@ function App() {
   return (
     <>
       {/* <Clock /> */}
-      <Carousel />
-      <BtnGroup />
+      {/* <Carousel /> */}
+      {/* <BtnGroup /> */}
       {/* <GetCard title={title} text={text} /> */}
-      <Progress percentage={40}/>
+      {/* <Progress percentage={40}/> */}
       {/* <MyCollapse text={text} opened={true} /> */}
       {/* <MyForm /> */}
       <Log />
       {/* <TodoBox /> */}
       {/* <ModalLearn /> */}
-      {/* <Autocomplete /> */}
+      <Autocomplete />
       <RemoteTodoBox />
     </>
   )

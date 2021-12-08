@@ -8,7 +8,7 @@ const RemoteTodoItem = ({task, onRemove, onFinish}) => {
         <div style={{marginRight: 20}} className="col-1">{task.id}</div>
         <div className="col col-md-7">
           <h4 href='#' className="todo-task">{task.title}</h4>
-          <div className="todo-task">{task.completed ? 'Completed' : 'In work...'}</div>
+          <div className="todo-task">{task.completed ? 'Completed!' : 'In work...'}</div>
           <Button variant={task.completed ? 'success' : 'primary'} onClick={() => onFinish(task)}>{task.completed ? 'Start task' : 'Finish task' }</Button>
         </div>
       </div>
